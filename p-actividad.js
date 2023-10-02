@@ -1,3 +1,5 @@
+//Ejercicio 1. Condicion:
+
 // let numero = Number(prompt(`Bienvenido a la Calculadora 
 //     1 Multiplicar
 //     2 Dividir    
@@ -28,7 +30,7 @@
 // }
 
 
-
+//Ejercicio 2. Bucle:
 
 // let Ingreso = Number(prompt("Dime un número, te los mostraré todos"))
 // if (Ingreso <= 100) {
