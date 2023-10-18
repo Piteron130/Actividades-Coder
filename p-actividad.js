@@ -1,42 +1,114 @@
-//Ejercicio 1. Condicion:
+/*
 
-// let numero = Number(prompt(`Bienvenido a la Calculadora 
-//     1 Multiplicar
-//     2 Dividir    
-//     3 Sumar    
-//     4 Restar`))
-// if (numero == 1) {
-//     let valor1 = Number(prompt("Ingresa tú primer valor, que lo multiplicaré"))
-//     let valor2 = Number(prompt("Ingresa tú segundo valor, que lo multiplicaré"))
-//     let resultado = valor1 * valor2
-//     console.log(`La multiplicación de ${valor1}X${valor2} es: ${resultado}`)
-// } else if (numero == 2) {
-//     let valor1 = Number(prompt("Ingresa tú primer valor, que lo dividiré"))
-//     let valor2 = Number(prompt("Ingresa tú segundo valor, que lo dividiré"))
-//     let resultado = valor1 / valor2
-//     console.log(`La división de ${valor1}/${valor2} es: ${resultado}`)
-// } else if (numero == 3) {
-//     let valor1 = Number(prompt("Ingresa tú primer valor, que lo sumaré"))
-//     let valor2 = Number(prompt("Ingresa tú segundo valor, que lo sumaré"))
-//     let resultado = valor1 + valor2
-//     console.log(`La suma de ${valor1}+${valor2} es: ${resultado}`)
-// } else if (numero == 4) {
-//     let valor1 = Number(prompt("Ingresa tú primer valor, que lo restaré"))
-//     let valor2 = Number(prompt("Ingresa tú segundo valor, que lo restaré"))
-//     let resultado = valor1 - valor2
-//     console.log(`La resta de ${valor1}-${valor2} es: ${resultado}`)
-// } else {
-//     console.log("No ingresaste ningun valor, correspondiente")
-// }
+VARIABLES
+FUNCIONES
+OBJETOS
+ARRAYS
+MÉTODOS DE BÚSQUEDA Y FILTRADO EN ARRAYS
+
+*/
 
 
-//Ejercicio 2. Bucle:
+//OBJETOS Acá estarán los DATOS PERSONALES. o donde se realizará el envió del producto
 
-// let Ingreso = Number(prompt("Dime un número, te los mostraré todos"))
-// if (Ingreso <= 100) {
-//     for (let i = 1; i <= Ingreso; i++) {
-//         console.log(`El número solicitado es: ${Ingreso}, Aquí están: ${i}`)
-//     }
-// } else {
-//     alerta = alert("El número no debe ser mayor a 100")
-// }
+const personal = {
+    nombre: "",
+    apellido: "",
+    edad: 0,
+    casada: Boolean,
+    mascota: Boolean,
+    direccion: {
+        localidad: "",
+        calle: "",
+        altura: "",
+    }
+}
+
+
+//AGREGAR O ACTUALIZAR CRUD
+
+personal.nombre = prompt("Tú nombre es: ")
+personal.edad = Number(prompt("Genial. " + personal.nombre + " ¿Cual es tu edad?: "))
+personal.direccion.localidad = prompt("Tú Localidad es: ")
+personal.direccion.calle = prompt("Calle: ")
+personal.direccion.altura = prompt("Altura: ")
+
+
+
+//Acá estarán los Arrays. Los catalogs, equipos a vender.
+
+const celulares = [ //CELULARES CARGADOS
+    { id: 1, marca: "Iphone", modelo: "Xs Max", precio: 700 },
+    { id: 2, marca: "Iphone", modelo: "8 Plus", precio: 350 },
+    { id: 3, marca: "Samsung", modelo: "Galaxy S4", precio: 150 },
+    { id: 4, marca: "Xiaomi", modelo: "Redmi Note 8", precio: 50 }
+]
+
+
+// FILTER (Filtra los OBJETOS del Array, mediante un precio en especificio)
+let filtroiphone = celulares.filter((x) => x.marca == "Iphone")
+let filtrosamsung = celulares.filter((x) => x.marca == "Samsung")
+let filtroxiaomi = celulares.filter((x) => x.marca == "Xiaomi")
+
+
+const catalogos = document.querySelector(".catalogo") //Definimos el .div
+
+
+for (x of celulares) {
+    let contenedor = document.createElement("div")
+    contenedor.innerHTML = `
+    <h5> Modelo: ${x.marca}</h5>
+    <p>Precio: U$D ${x.precio}</p>
+    <p></p>
+    
+
+<button class="btn btn-warning">Comprar</button>
+`
+    document.body.appendChild(contenedor)
+}
+
+
+
+let comprar = prompt(`
+Bienvenido a la tienda de Celulares
+
+1- Ver el catalogo
+2- Filtrar/buscar Modelos
+3- Salir
+`)
+
+if (comprar == 1) {
+    VCompra = prompt(`
+    Modelo: 1, marca: "Iphone", modelo: "Xs Max", precio: 700 
+    Modelo: 2, marca: "Iphone", modelo: "8 Plus", precio: 350 
+    Modelo: 3, marca: "Samsung", modelo: "Galaxy S4", precio: 150 
+    Modelo: 4, marca: "Xiaomi", modelo: "Redmi Note 8", precio: 50
+    `)
+
+} else if (comprar == 2) {
+    Modelo = prompt(`Indicá el modelo: Iphone, Samsung o Xiaomi`)
+    if (Modelo == "Iphone") {
+        console.log(filtroiphone)
+
+    } else if (Modelo == "Samsung") {
+        console.log(filtrosamsung)
+
+    } else if (Modelo == "Xiaomi") {
+        console.log(filtroxiaomi)
+
+    } else {
+        console.log("No ingresaste ningun campo")
+    }
+
+} else {
+    console.log("No ingresaste ningun valor valido. ")
+}
+
+
+function recordar() {
+    console.log(`Genial ${personal.nombre}!. El equipo será enviado en
+La localidad de ${personal.direccion.localidad} La calle, ${personal.direccion.calle}. El 
+número: ${personal.direccion.altura}. Muchas gracias!`)
+}
+
+recordar(personal, recordar)
